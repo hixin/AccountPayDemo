@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.bumptech.glide.Glide;
 import com.cloudminds.app.dataserver.UserInfo;
 import com.cloudminds.app.dataserver.client.Constants;
@@ -35,7 +37,7 @@ public class MainActivity extends PermissionActivity {
         imageView = findViewById(R.id.user_image);
         textView = findViewById(R.id.user_name);
 
-        findViewById(R.id.Login).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DataServiceApi.getInstance().login(MainActivity.this, new DataServiceApi.AccountCallback() {
@@ -63,7 +65,56 @@ public class MainActivity extends PermissionActivity {
             }
         });
 
-        findViewById(R.id.LoginOut).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.custom_login).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DataServiceApi.getInstance().login("customized_sign_in",MainActivity.this, new DataServiceApi.AccountCallback() {
+                    @Override
+                    public void onUserInfoResponse(@NonNull final UserInfo userInfo) {
+                        mUserInfo = userInfo;
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                textView.setText(userInfo.getNick());
+                                Glide.with(MainActivity.this)
+                                        .load(userInfo.getAvatar())
+                                        .into(imageView);
+                            }
+                        });
+
+                    }
+
+                    @Override
+                    public void onOtherInfoResponse(@Nullable String status, @Nullable String msg) {
+
+                    }
+
+                });
+            }
+        });
+
+        findViewById(R.id.is_login).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DataServiceApi.getInstance().isAccountExist(MainActivity.this, new DataServiceApi.AccountCallback() {
+                    @Override
+                    public void onUserInfoResponse(@NonNull UserInfo userInfo) {
+
+                    }
+
+                    @Override
+                    public void onOtherInfoResponse(@Nullable String status, @Nullable String msg) {
+                        Log.i(TAG, "onOtherInfoResponse: " + msg);
+                        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                        if (msg.equals("true")) {
+                            //TODO  account exist
+                        }
+                    }
+                });
+            }
+        });
+
+        findViewById(R.id.loginOut).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DataServiceApi.getInstance().logout(MainActivity.this, new DataServiceApi.AccountCallback() {
@@ -145,5 +196,11 @@ public class MainActivity extends PermissionActivity {
             flag = "";
             //TODO  logout
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        DataServiceApi.getInstance().unbindService(this);
     }
 }
