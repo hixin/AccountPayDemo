@@ -1,9 +1,9 @@
 package com.data.cloudminds.disk;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -31,7 +31,7 @@ public class MainActivity extends PermissionActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        DataServiceApi.getInstance().getInstance().init(this);
+        DataServiceApi.getInstance().init(this, "450ecc36f5bb46cb8eec5ca8f589222d");
         setContentView(R.layout.activity_main);
 
         imageView = findViewById(R.id.user_image);
@@ -68,7 +68,7 @@ public class MainActivity extends PermissionActivity {
         findViewById(R.id.custom_login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DataServiceApi.getInstance().login("customized_sign_in",MainActivity.this, new DataServiceApi.AccountCallback() {
+                DataServiceApi.getInstance().login("kaleido_sign_in",MainActivity.this, new DataServiceApi.AccountCallback() {
                     @Override
                     public void onUserInfoResponse(@NonNull final UserInfo userInfo) {
                         mUserInfo = userInfo;
@@ -138,7 +138,7 @@ public class MainActivity extends PermissionActivity {
         findViewById(R.id.modify_userInfo).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DataServiceApi.getInstance().readWriteUserInfo(MainActivity.this, mUserInfo, new DataServiceApi.AccountCallback() {
+                DataServiceApi.getInstance().readWriteUserInfo(MainActivity.this, "com.cloudminds.app.dataserver.template.DefaultFragment", mUserInfo, new DataServiceApi.AccountCallback() {
                     @Override
                     public void onUserInfoResponse(@NonNull final UserInfo userInfo) {
                         Log.i(TAG, "onUserInfoResponse: " + userInfo.toString());
@@ -170,7 +170,11 @@ public class MainActivity extends PermissionActivity {
             }
         });
 
+
+        //DataServiceApi.getInstance().linkQR();
+
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

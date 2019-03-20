@@ -41,5 +41,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     implementation 'com.github.bumptech.glide:glide:4.8.0'
-    implementation 'com.cloudminds:AccountPay:1.0.7-preview'
+    implementation 'com.cloudminds:AccountPay:1.0.9-preview'
 }
