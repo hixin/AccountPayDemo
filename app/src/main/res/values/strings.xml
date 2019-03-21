@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">AccountPayDemo</string>
+    <string name="username">username</string>
+
+    <string name="login">login</string>
+
+    <string name="custom_login">custom_login</string>
+
+    <string name="isLogin">isLogin</string>
+
+    <string name="logout">logout</string>
+
+    <string name="userInfo">userInfo</string>
+
+    <string name="pay">pay</string>
 </resources>

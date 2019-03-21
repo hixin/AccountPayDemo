@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">AccountPayDemo</string>
+    <string name="username">用户名:</string>
+
+    <string name="login">登录</string>
+
+    <string name="custom_login">定制登陆</string>
+
+    <string name="isLogin">是否登陆</string>
+
+    <string name="logout">注销</string>
+
+    <string name="userInfo">用户信息</string>
+
+    <string name="pay">支付</string>
+</resources>

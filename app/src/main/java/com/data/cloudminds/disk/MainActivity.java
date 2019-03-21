@@ -31,7 +31,10 @@ public class MainActivity extends PermissionActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        DataServiceApi.getInstance().init(this, "450ecc36f5bb46cb8eec5ca8f589222d");
+        boolean result = DataServiceApi.getInstance().init(this, "450ecc36f5bb46cb8eec5ca8f589222d");
+        if (!result) {
+            Toast.makeText(this, "init: " + result, Toast.LENGTH_SHORT).show();
+        }
         setContentView(R.layout.activity_main);
 
         imageView = findViewById(R.id.user_image);
@@ -58,7 +61,9 @@ public class MainActivity extends PermissionActivity {
 
                     @Override
                     public void onOtherInfoResponse(@Nullable String status, @Nullable String msg) {
-
+                        if (status.equals(Constants.STATUS_FAIL)) {
+                            Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                 });
@@ -86,7 +91,9 @@ public class MainActivity extends PermissionActivity {
 
                     @Override
                     public void onOtherInfoResponse(@Nullable String status, @Nullable String msg) {
-
+                        if (status.equals(Constants.STATUS_FAIL)) {
+                            Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                 });
@@ -105,7 +112,9 @@ public class MainActivity extends PermissionActivity {
                     @Override
                     public void onOtherInfoResponse(@Nullable String status, @Nullable String msg) {
                         Log.i(TAG, "onOtherInfoResponse: " + msg);
-                        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                        if (status.equals(Constants.STATUS_FAIL)) {
+                            Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                        }
                         if (msg.equals("true")) {
                             //TODO  account exist
                         }
@@ -125,6 +134,9 @@ public class MainActivity extends PermissionActivity {
 
                     @Override
                     public void onOtherInfoResponse(@Nullable String status, @Nullable String msg) {
+                        if (status.equals(Constants.STATUS_FAIL)) {
+                            Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                        }
                         Log.i(TAG, "onOtherInfoResponse: " + status);
                         mUserInfo = null;
                         flag = msg;
@@ -156,6 +168,9 @@ public class MainActivity extends PermissionActivity {
                     @Override
                     public void onOtherInfoResponse(@Nullable String status, @Nullable String msg) {
                         Log.i(TAG, "onOtherInfoResponse: " + msg);
+                        if (status.equals(Constants.STATUS_FAIL)) {
+                            Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                        }
                         flag = msg;
                     }
                 });
