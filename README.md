@@ -100,11 +100,11 @@ For more detail, you can see the demo.
 ## Features
 login function:
 
-![](http://ww1.sinaimg.cn/small/c1955565gy1g1bqsj048pj21401z4q5y.jpg)
+![](http://ww1.sinaimg.cn/mw690/c1955565gy1g1bqsj048pj21401z4q5y.jpg)
 
 pay function:
 
-![](http://ww1.sinaimg.cn/small/c1955565gy1g1bqt284ccj21401z4770.jpg)
+![](http://ww1.sinaimg.cn/mw690/c1955565gy1g1bqt284ccj21401z4770.jpg)
 
 ## Development
 
