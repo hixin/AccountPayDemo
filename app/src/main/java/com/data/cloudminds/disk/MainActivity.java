@@ -70,35 +70,6 @@ public class MainActivity extends PermissionActivity {
             }
         });
 
-        findViewById(R.id.custom_login).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DataServiceApi.getInstance().login("kaleido_sign_in",MainActivity.this, new DataServiceApi.AccountCallback() {
-                    @Override
-                    public void onUserInfoResponse(@NonNull final UserInfo userInfo) {
-                        mUserInfo = userInfo;
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                textView.setText(userInfo.getNick());
-                                Glide.with(MainActivity.this)
-                                        .load(userInfo.getAvatar())
-                                        .into(imageView);
-                            }
-                        });
-
-                    }
-
-                    @Override
-                    public void onOtherInfoResponse(@Nullable String status, @Nullable String msg) {
-                        if (status.equals(Constants.STATUS_FAIL)) {
-                            Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                });
-            }
-        });
 
         findViewById(R.id.is_login).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -185,8 +156,6 @@ public class MainActivity extends PermissionActivity {
             }
         });
 
-
-        //DataServiceApi.getInstance().linkQR();
 
     }
 
