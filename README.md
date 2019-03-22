@@ -1,7 +1,6 @@
-# AccountPayDemo
 a demo show how to use AccountPay SDK
 
-
+## AccountPay
 > AccountPay integrat login and payment functions. The interface is simple and easy to integrate. Users do not need to develop login and payment functions, which can effectively shorten the develop time.
 
 ## Download
@@ -52,7 +51,7 @@ Simple use cases will look something like this:
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // step1  init 
+        // step1  init, This method must be called first when using other functions 
         boolean result = DataServiceApi.getInstance().init(this, "450ecc36f5bb46cb8eec5ca8f589222d");
         if (!result) {
             Toast.makeText(this, "init: " + result, Toast.LENGTH_SHORT).show();
@@ -65,7 +64,7 @@ Simple use cases will look something like this:
         findViewById(R.id.login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //step2 call the login method
+                //use login function
                 DataServiceApi.getInstance().login(MainActivity.this, new DataServiceApi.AccountCallback() {
                     @Override
                     public void onUserInfoResponse(@NonNull final UserInfo userInfo) {
@@ -83,5 +82,15 @@ Simple use cases will look something like this:
             }
         });
         
+        
+        // use pay function
+        findViewById(R.id.test_pay).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DataServiceApi.getInstance().payOrder(MainActivity.this, "Test pay subject", 0.01, PAY_CODE);
+            }
+        });
 
 ```
+
+## 
