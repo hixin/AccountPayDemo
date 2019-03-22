@@ -92,21 +92,21 @@ Simple use cases will look something like this:
         });
 
 ```
-For more detail, you can read the demo code.
+For more detail, you can see the demo.
 
-## sample
+## Sample
+[AccountPay_v1.1.0_sample.apk](https://github.com/hixin/AccountPayDemo/releases/download/1.1.0-preview/AccountPay_v1.1.0_sample.apk)
 
-
-## UI
+## Features
 login function:
 
-![](http://ww1.sinaimg.cn/large/c1955565gy1g1bqsj048pj21401z4q5y.jpg)
+![](http://ww1.sinaimg.cn/small/c1955565gy1g1bqsj048pj21401z4q5y.jpg)
 
 pay function:
 
-![](http://ww1.sinaimg.cn/large/c1955565gy1g1bqt284ccj21401z4770.jpg)
+![](http://ww1.sinaimg.cn/small/c1955565gy1g1bqt284ccj21401z4770.jpg)
 
 ## Development
 
-1. you need a appId first
-2. 
+1. you need a appId first as one parameter of init method.
+
