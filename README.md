@@ -92,5 +92,21 @@ Simple use cases will look something like this:
         });
 
 ```
+For more detail, you can read the demo code.
 
-## 
+## sample
+
+
+## UI
+login function:
+
+![](http://ww1.sinaimg.cn/large/c1955565gy1g1bqsj048pj21401z4q5y.jpg)
+
+pay function:
+
+![](http://ww1.sinaimg.cn/large/c1955565gy1g1bqt284ccj21401z4770.jpg)
+
+## Development
+
+1. you need a appId first
+2. 
