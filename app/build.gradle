@@ -6,8 +6,8 @@ android {
         applicationId "com.data.cloudminds.demo"
         minSdkVersion 22
         targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        versionCode 110
+        versionName "1.1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -30,6 +30,14 @@ android {
             signingConfig signingConfigs.config
         }
     }
+
+    //在apk文件后边生成版本号信息
+    android.applicationVariants.all {
+        variant ->
+            variant.outputs.all {
+                outputFileName = "AccountPay"+"_v${defaultConfig.versionName}_sample.apk"
+            }
+    }
 }
 
 dependencies {
@@ -41,5 +49,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     implementation 'com.github.bumptech.glide:glide:4.8.0'
-    implementation 'com.cloudminds:AccountPay:1.0.9-preview'
+    implementation 'com.cloudminds:AccountPay:1.1.0-preview'
 }

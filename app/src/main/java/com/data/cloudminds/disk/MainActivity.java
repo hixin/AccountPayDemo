@@ -83,9 +83,8 @@ public class MainActivity extends PermissionActivity {
                     @Override
                     public void onOtherInfoResponse(@Nullable String status, @Nullable String msg) {
                         Log.i(TAG, "onOtherInfoResponse: " + msg);
-                        if (status.equals(Constants.STATUS_FAIL)) {
-                            Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
-                        }
+                        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+
                         if (msg.equals("true")) {
                             //TODO  account exist
                         }
